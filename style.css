@@ -1,3 +1,11 @@
 body {
-  background-color: #83ccdb;
-}
+  margin: 0;
+  height: 100vh;
+
+  background: linear-gradient(135deg,
+    #FF6F61,   /* Burnt Orange */
+    #FFB84C,   /* Mustard Yellow */
+    #7BAF5C,   /* Avocado Green */
+    #A46F4B,   /* Cinnamon Brown */
+    #D9CAB3    /* Beige */
+  );
