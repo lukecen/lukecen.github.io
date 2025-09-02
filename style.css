@@ -9,3 +9,17 @@ body {
     #A46F4B,   /* Cinnamon Brown */
     #D9CAB3    /* Beige */
   );
+
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+
+  font-family: 'Helvetica', sans-serif;
+  color: #fff;
+}
+
+/* Optional: Smooth gradient animation for a groovy vibe */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
