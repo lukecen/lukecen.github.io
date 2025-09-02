@@ -24,6 +24,15 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Henny Penny", "Comic Sans", sans-serif;
 }
+
+a {
+  color: white;
+}
+
+a:visited {
+  text-decoration: line-through;
+  color: rgba(255,255,255,.5);
+}
 /* Optional: animate the gradient for a dynamic retro feel */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
