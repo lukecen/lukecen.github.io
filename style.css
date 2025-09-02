@@ -3,11 +3,11 @@ body {
   height: 100vh;
 
   background: linear-gradient(135deg,
-    #FF6F61,   /* Burnt Orange */
-    #FFB84C,   /* Mustard Yellow */
-    #7BAF5C,   /* Avocado Green */
-    #A46F4B,   /* Cinnamon Brown */
-    #D9CAB3    /* Beige */
+    #FF6F61,  /* Burnt Orange */
+    #FFB84C,  /* Mustard Yellow */
+    #7BAF5C,  /* Avocado Green */
+    #FF8FAB,  /* Retro Pink */
+    #F7E967   /* Pale Yellow */
   );
 
   background-size: 400% 400%;
@@ -17,7 +17,7 @@ body {
   color: #fff;
 }
 
-/* Optional: Smooth gradient animation for a groovy vibe */
+/* Optional: animate the gradient for a dynamic retro feel */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
