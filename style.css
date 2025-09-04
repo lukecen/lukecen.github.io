@@ -15,13 +15,8 @@ body {
   background-size: 400% 400%;
   animation: gradientShift 20s ease infinite;
 
-  font-family: 'Helvetica', sans-serif;
-  color: #fff;
-  font-family: "Oswald", sans-serif;
-  color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  background: #f4f4f9;
   color: #333;
   padding: 20px;
 }
