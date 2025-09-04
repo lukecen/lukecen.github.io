@@ -19,6 +19,11 @@ body {
   color: #fff;
   font-family: "Oswald", sans-serif;
   color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: #f4f4f9;
+  color: #333;
+  padding: 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -38,4 +43,71 @@ a:visited {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* Main content styling */
+.Main {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.Main h1 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.Main img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+/* Aside styling */
+aside {
+  background: #ffffff;
+  padding: 20px;
+  border-left: 5px solid #3498db;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+aside h2 {
+  color: #2980b9;
+  margin-bottom: 15px;
+}
+
+aside ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+aside ul li {
+  margin-bottom: 10px;
+}
+
+aside ul li a {
+  text-decoration: none;
+  color: #3498db;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+aside ul li a:hover {
+  color: #2c3e50;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    border-left: none;
+    border-top: 5px solid #3498db;
+    margin-top: 20px;
+  }
 }
