@@ -7,39 +7,41 @@ body {
   flex-direction: column;
   align-items: center;
 
-  /* Moving gradient stays the same */
+  /* Animated gradient background */
   background: linear-gradient(135deg,
     #FF7F50,  /* Coral Retro Orange */
     #FFD662,  /* Golden Mustard */
-    #A3C586,  /* Sage Green */
-    #FF9EB5,  /* Soft Pink */
-    #FAF3DD   /* Creamy Yellow */
+    #00B894,  /* Surf Green */
+    #00BCD4,  /* Ocean Teal */
+    #FF9EB5   /* Soft Pink */
   );
   background-size: 500% 500%;
   animation: gradientShift 25s ease-in-out infinite;
 
   font-family: 'Oswald', sans-serif;
-  color: #2c2c2c;
+  color: #fff;
   line-height: 1.6;
   padding: 20px;
   overflow-x: hidden;
+  text-align: center;
 }
 
-/* Surf-vibe headings */
+/* Surfer headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Henny Penny", cursive;
-  text-shadow: 3px 3px 8px rgba(0,0,0,0.4);
-  color: #fff;
-  letter-spacing: 4px;
+  text-shadow: 3px 3px 10px rgba(0,0,0,0.6);
+  color: #FFD662;
+  letter-spacing: 5px;
   text-transform: uppercase;
 }
 
-/* Links styled like surf posters */
+/* Links like neon surf posters */
 a {
-  color: #fff;
+  color: #FFEB3B; /* bright yellow */
   text-decoration: none;
   font-weight: bold;
   position: relative;
+  transition: all 0.3s ease;
 }
 a::after {
   content: "";
@@ -51,6 +53,10 @@ a::after {
   background: currentColor;
   transform: scaleX(0);
   transition: transform 0.3s;
+}
+a:hover {
+  color: #00E5FF;
+  text-shadow: 0 0 10px #00E5FF;
 }
 a:hover::after {
   transform: scaleX(1);
@@ -65,70 +71,67 @@ a:hover::after {
 
 /* Main surf card */
 .Main {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.6);
   padding: 2rem;
   margin: 2rem auto;
   border-radius: 24px;
   max-width: 900px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
   backdrop-filter: blur(8px);
-  text-align: center;
+  border: 4px solid #FFD662;
   animation: floatUp 3s ease-in-out infinite alternate;
-  border: 4px solid #FF7F50;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/44/Surfboard_stack.jpg');
-  background-size: cover;
-  background-position: center;
   color: #fff;
 }
 
 .Main h1 {
-  color: #fff;
+  color: #FFEB3B;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
 }
 
 .Main img {
-  max-width: 90%;
-  border-radius: 16px;
+  max-width: 95%;
+  border-radius: 20px;
   margin-top: 20px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease;
 }
 .Main img:hover {
-  transform: scale(1.05) rotate(-2deg);
+  transform: scale(1.08) rotate(-3deg);
 }
 
-/* Surf button */
+/* Neon surf button */
 .button-retro {
   display: inline-block;
-  padding: 12px 24px;
+  padding: 14px 28px;
   margin-top: 20px;
-  background: #00bcd4; /* ocean teal */
+  background: #FF4081; /* neon pink */
   color: #fff;
   border-radius: 50px;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-decoration: none;
-  box-shadow: 0 0 12px #00bcd4, 0 0 24px #ff7f50;
+  box-shadow: 0 0 15px #FF4081, 0 0 35px #00BCD4;
   transition: all 0.3s ease;
 }
 .button-retro:hover {
-  background: #fff;
-  color: #00bcd4;
-  box-shadow: 0 0 15px #fff, 0 0 30px #00bcd4;
+  background: #00E5FF;
+  color: #2c2c2c;
+  box-shadow: 0 0 20px #fff, 0 0 40px #00E5FF;
 }
 
 /* Marquee banner */
 .marquee {
   width: 100%;
-  background: rgba(0,0,0,0.6);
-  color: #FFD662;
+  background: rgba(0,0,0,0.8);
+  color: #00E5FF;
   font-family: "Henny Penny", cursive;
-  padding: 10px;
+  padding: 12px;
   overflow: hidden;
   white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  text-shadow: 0 0 8px #00E5FF;
 }
 .marquee span {
   display: inline-block;
@@ -142,43 +145,38 @@ a:hover::after {
 
 /* Surf aside */
 aside {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.7);
   padding: 25px;
   margin: 2rem;
-  border-left: 6px solid #00bcd4;
+  border-left: 6px solid #00E5FF;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0c/California_coastline.jpg');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: #FFD662;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
 }
 
 aside h2 {
-  color: #FFD662;
+  color: #FFEB3B;
   margin-bottom: 15px;
   font-weight: bold;
+  text-shadow: 0 0 10px #FFEB3B;
 }
 
-/* Surf shack footer */
+/* Footer */
 footer {
   width: 100%;
   background: #2c2c2c;
-  color: #FFD662;
+  color: #FFEB3B;
   text-align: center;
   padding: 15px;
   font-family: "Oswald", sans-serif;
   letter-spacing: 2px;
-  border-top: 6px solid #00bcd4;
+  border-top: 6px solid #00E5FF;
   position: fixed;
   bottom: 0;
   left: 0;
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.3);
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b1/Surf_shack.jpg');
-  background-size: cover;
-  background-position: center;
-  text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
+  text-shadow: 0 0 6px rgba(255,255,255,0.6);
 }
 
 /* Floating animation */
