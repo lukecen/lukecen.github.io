@@ -7,7 +7,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  /* Animated gradient background */
+  /* Moving gradient stays the same */
   background: linear-gradient(135deg,
     #FF7F50,  /* Coral Retro Orange */
     #FFD662,  /* Golden Mustard */
@@ -25,16 +25,16 @@ body {
   overflow-x: hidden;
 }
 
-/* Retro headings */
+/* Surf-vibe headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Henny Penny", cursive;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.4);
   color: #fff;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
 }
 
-/* Links */
+/* Links styled like surf posters */
 a {
   color: #fff;
   text-decoration: none;
@@ -56,28 +56,35 @@ a:hover::after {
   transform: scaleX(1);
 }
 
-/* Animated gradient background movement */
+/* Gradient animation */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Main content card */
+/* Main surf card */
 .Main {
-  background: rgba(255, 248, 231, 0.9);
+  background: rgba(255, 255, 255, 0.85);
   padding: 2rem;
-  margin: 2rem;
+  margin: 2rem auto;
   border-radius: 24px;
+  max-width: 900px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(8px);
   text-align: center;
   animation: floatUp 3s ease-in-out infinite alternate;
+  border: 4px solid #FF7F50;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/44/Surfboard_stack.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
 }
 
 .Main h1 {
-  color: #3b3b3b;
+  color: #fff;
   margin-bottom: 1rem;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
 }
 
 .Main img {
@@ -91,28 +98,28 @@ a:hover::after {
   transform: scale(1.05) rotate(-2deg);
 }
 
-/* Neon retro button */
+/* Surf button */
 .button-retro {
   display: inline-block;
   padding: 12px 24px;
   margin-top: 20px;
-  background: #ff6f61;
+  background: #00bcd4; /* ocean teal */
   color: #fff;
   border-radius: 50px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-decoration: none;
-  box-shadow: 0 0 10px #ff6f61, 0 0 20px #ff9eb5;
+  box-shadow: 0 0 12px #00bcd4, 0 0 24px #ff7f50;
   transition: all 0.3s ease;
 }
 .button-retro:hover {
   background: #fff;
-  color: #ff6f61;
-  box-shadow: 0 0 15px #fff, 0 0 30px #ff6f61;
+  color: #00bcd4;
+  box-shadow: 0 0 15px #fff, 0 0 30px #00bcd4;
 }
 
-/* Retro marquee banner */
+/* Marquee banner */
 .marquee {
   width: 100%;
   background: rgba(0,0,0,0.6);
@@ -133,54 +140,45 @@ a:hover::after {
   to { transform: translateX(-100%); }
 }
 
-/* Aside section */
+/* Surf aside */
 aside {
   background: rgba(255, 255, 255, 0.95);
   padding: 25px;
   margin: 2rem;
-  border-left: 6px solid #ff6f61;
+  border-left: 6px solid #00bcd4;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0c/California_coastline.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
 aside h2 {
-  color: #ff6f61;
+  color: #FFD662;
   margin-bottom: 15px;
   font-weight: bold;
 }
 
-aside ul {
-  list-style-type: square;
-  padding-left: 20px;
-}
-
-aside ul li {
-  margin-bottom: 12px;
-}
-
-aside ul li a {
-  color: #ff6f61;
-  transition: color 0.3s, transform 0.2s;
-}
-aside ul li a:hover {
-  color: #2c2c2c;
-  transform: translateX(4px);
-}
-
-/* Footer (tape-deck style bar) */
+/* Surf shack footer */
 footer {
   width: 100%;
   background: #2c2c2c;
-  color: #fff;
+  color: #FFD662;
   text-align: center;
   padding: 15px;
   font-family: "Oswald", sans-serif;
-  letter-spacing: 1px;
-  border-top: 4px solid #ff6f61;
+  letter-spacing: 2px;
+  border-top: 6px solid #00bcd4;
   position: fixed;
   bottom: 0;
   left: 0;
   box-shadow: 0 -4px 12px rgba(0,0,0,0.3);
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b1/Surf_shack.jpg');
+  background-size: cover;
+  background-position: center;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
 }
 
 /* Floating animation */
@@ -189,7 +187,7 @@ footer {
   to { transform: translateY(-10px); }
 }
 
-/* Responsive design */
+/* Responsive */
 @media (max-width: 768px) {
   .Main, aside {
     margin: 1rem;
