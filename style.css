@@ -3,108 +3,136 @@
 body {
   margin: 0;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  /* Vintage gradient overlay */
   background: linear-gradient(135deg,
-    #FF6F61,  /* Burnt Orange */
-    #FFB84C,  /* Mustard Yellow */
-    #7BAF5C,  /* Avocado Green */
-    #FF8FAB,  /* Retro Pink */
-    #F7E967   /* Pale Yellow */
+    #FF7F50,  /* Coral Retro Orange */
+    #FFD662,  /* Golden Mustard */
+    #A3C586,  /* Sage Green */
+    #FF9EB5,  /* Soft Pink */
+    #FAF3DD   /* Creamy Yellow */
   );
+  background-size: 500% 500%;
+  animation: gradientShift 25s ease-in-out infinite;
 
-  background-size: 400% 400%;
-  animation: gradientShift 20s ease infinite;
+  /* Vintage car background image */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8e/1957_Chevrolet_Bel_Air_sedan.jpg');
+  background-blend-mode: multiply;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Oswald', sans-serif;
+  color: #2c2c2c;
   line-height: 1.6;
-  color: #333;
   padding: 20px;
 }
 
+/* Headings with funky retro feel */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Henny Penny", "Comic Sans", sans-serif;
+  font-family: "Henny Penny", cursive;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  color: #fff8e7;
+  letter-spacing: 2px;
 }
 
+/* Links */
 a {
-  color: white;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+a:hover::after {
+  transform: scaleX(1);
 }
 
-a:visited {
-  text-decoration: line-through;
-  color: rgba(255,255,255,.5);
-}
-/* Optional: animate the gradient for a dynamic retro feel */
+/* Animated gradient background */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Main content styling */
+/* Main content card */
 .Main {
-  background: #f5c49f;
-  padding: 1rem;
-  margin: 2rem; /* Added */
+  background: rgba(255, 248, 231, 0.85);
+  padding: 2rem;
+  margin: 2rem;
   border-radius: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  text-align: center;
 }
 
 .Main h1 {
-  color: #2c3e50;
-  margin-bottom: 10px;
+  color: #3b3b3b;
+  margin-bottom: 1rem;
 }
 
 .Main img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-top: 15px;
+  max-width: 90%;
+  border-radius: 16px;
+  margin-top: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+.Main img:hover {
+  transform: scale(1.05);
 }
 
-/* Aside styling */
+/* Aside section (retro info box) */
 aside {
-  background: #ffffff;
-  padding: 20px;
-  margin: 2rem; /* Added */
-  border-left: 5px solid #3498db;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  margin: 2rem;
+  border-left: 6px solid #ff6f61;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 aside h2 {
-  color: #2980b9;
+  color: #ff6f61;
   margin-bottom: 15px;
+  font-weight: bold;
 }
 
 aside ul {
-  list-style-type: none;
-  padding: 0;
+  list-style-type: square;
+  padding-left: 20px;
 }
 
 aside ul li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 aside ul li a {
-  text-decoration: none;
-  color: #3498db;
-  font-weight: bold;
-  transition: color 0.3s;
+  color: #ff6f61;
+  transition: color 0.3s, transform 0.2s;
 }
-
 aside ul li a:hover {
-  color: #2c3e50;
+  color: #2c2c2c;
+  transform: translateX(4px);
 }
 
-/* Responsive layout for smaller screens */
+/* Responsive design */
 @media (max-width: 768px) {
-  body {
-    grid-template-columns: 1fr;
-  }
-
-  aside {
-    border-left: none;
-    border-top: 5px solid #3498db;
-    margin-top: 20px;
+  .Main, aside {
+    margin: 1rem;
+    padding: 1rem;
   }
 }
