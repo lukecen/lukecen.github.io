@@ -6,38 +6,34 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  padding: 20px;
+  overflow-x: hidden;
 
   /* Animated gradient background */
   background: linear-gradient(135deg,
-    #FF7F50,  /* Coral Retro Orange */
-    #FFD662,  /* Golden Mustard */
-    #00B894,  /* Surf Green */
-    #00BCD4,  /* Ocean Teal */
-    #FF9EB5   /* Soft Pink */
-  );
+    #FF7F50, #FFD662, #00B894, #00BCD4, #FF9EB5);
   background-size: 500% 500%;
   animation: gradientShift 25s ease-in-out infinite;
 
   font-family: 'Oswald', sans-serif;
   color: #fff;
   line-height: 1.6;
-  padding: 20px;
-  overflow-x: hidden;
-  text-align: center;
 }
 
-/* Surfer headings */
+/* Animated headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Henny Penny", cursive;
   text-shadow: 3px 3px 10px rgba(0,0,0,0.6);
   color: #FFD662;
   letter-spacing: 5px;
   text-transform: uppercase;
+  animation: glowPulse 4s ease-in-out infinite alternate;
 }
 
-/* Links like neon surf posters */
+/* Neon links */
 a {
-  color: #FFEB3B; /* bright yellow */
+  color: #FFEB3B;
   text-decoration: none;
   font-weight: bold;
   position: relative;
@@ -46,10 +42,8 @@ a {
 a::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 100%;
-  height: 2px;
+  left: 0; bottom: -3px;
+  width: 100%; height: 2px;
   background: currentColor;
   transform: scaleX(0);
   transition: transform 0.3s;
@@ -62,15 +56,8 @@ a:hover::after {
   transform: scaleX(1);
 }
 
-/* Gradient animation */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 /* Main surf card */
-.Main {
+.Main, .OrgBox {
   background: rgba(0, 0, 0, 0.6);
   padding: 2rem;
   margin: 2rem auto;
@@ -81,31 +68,72 @@ a:hover::after {
   border: 4px solid #FFD662;
   animation: floatUp 3s ease-in-out infinite alternate;
   color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
-.Main h1 {
-  color: #FFEB3B;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+/* Extra hover shine */
+.Main::before, .OrgBox::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transform: skewX(-20deg);
+}
+.Main:hover::before, .OrgBox:hover::before {
+  animation: shine 1s;
 }
 
-.Main img {
-  max-width: 95%;
+/* Flip card container */
+.flip-card {
+  background: transparent;
+  width: 300px; height: 300px;
+  perspective: 1000px;
+  margin: 20px auto;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%; height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%; height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   border-radius: 20px;
-  margin-top: 20px;
+  overflow: hidden;
   box-shadow: 0 8px 28px rgba(0,0,0,0.5);
-  transition: transform 0.4s ease;
 }
-.Main img:hover {
-  transform: scale(1.08) rotate(-3deg);
+.flip-card-front {
+  background: #000;
+}
+.flip-card-front img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.flip-card-back {
+  background: linear-gradient(135deg, #FF4081, #00E5FF);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  transform: rotateY(180deg);
+  text-shadow: 0 0 12px #000;
 }
 
-/* Neon surf button */
+/* Buttons */
 .button-retro {
   display: inline-block;
   padding: 14px 28px;
   margin-top: 20px;
-  background: #FF4081; /* neon pink */
+  background: #FF4081;
   color: #fff;
   border-radius: 50px;
   font-weight: bold;
@@ -114,6 +142,7 @@ a:hover::after {
   text-decoration: none;
   box-shadow: 0 0 15px #FF4081, 0 0 35px #00BCD4;
   transition: all 0.3s ease;
+  animation: pulse 2s infinite;
 }
 .button-retro:hover {
   background: #00E5FF;
@@ -121,7 +150,7 @@ a:hover::after {
   box-shadow: 0 0 20px #fff, 0 0 40px #00E5FF;
 }
 
-/* Marquee banner */
+/* Marquee */
 .marquee {
   width: 100%;
   background: rgba(0,0,0,0.8);
@@ -138,12 +167,8 @@ a:hover::after {
   padding-left: 100%;
   animation: marqueeMove 15s linear infinite;
 }
-@keyframes marqueeMove {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
 
-/* Surf aside */
+/* Aside */
 aside {
   background: rgba(0, 0, 0, 0.7);
   padding: 25px;
@@ -154,7 +179,6 @@ aside {
   color: #FFD662;
   text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
 }
-
 aside h2 {
   color: #FFEB3B;
   margin-bottom: 15px;
@@ -173,21 +197,41 @@ footer {
   letter-spacing: 2px;
   border-top: 6px solid #00E5FF;
   position: fixed;
-  bottom: 0;
-  left: 0;
+  bottom: 0; left: 0;
   box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
   text-shadow: 0 0 6px rgba(255,255,255,0.6);
 }
 
-/* Floating animation */
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 @keyframes floatUp {
   from { transform: translateY(0px); }
   to { transform: translateY(-10px); }
 }
+@keyframes marqueeMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+@keyframes glowPulse {
+  from { text-shadow: 0 0 8px #FFD662; }
+  to { text-shadow: 0 0 20px #FF4081, 0 0 30px #00E5FF; }
+}
+@keyframes shine {
+  100% { left: 125%; }
+}
 
 /* Responsive */
 @media (max-width: 768px) {
-  .Main, aside {
+  .Main, aside, .OrgBox {
     margin: 1rem;
     padding: 1rem;
   }
