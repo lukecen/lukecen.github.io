@@ -1,127 +1,138 @@
+/* GENERAL STYLES */
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: #fff;
   overflow: hidden;
+  color: #000;
 }
 
+/* SITE CONTAINER */
 .site-container {
-  display: flex;
-  width: 300vw;
-  height: 100vh;
-  transition: transform 0.8s ease-in-out;
   position: relative;
-}
-
-/* PANELS */
-.panel {
   width: 100vw;
   height: 100vh;
-  overflow-y: auto;
-  flex-shrink: 0;
-  background: white;
-  transform: translateX(0);
-  opacity: 0;
-  pointer-events: none;
+  overflow: hidden;
+}
+
+/* PANEL BASE */
+.panel {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 100%;
+  opacity: 0;
   transition: all 0.8s ease-in-out;
+  overflow-y: auto;
+  background: #fff;
 }
 
 .panel.active {
+  left: 0;
   opacity: 1;
-  pointer-events: all;
-  transform: translateX(0);
   z-index: 10;
 }
 
-/* BACKGROUND COLORS */
-#books {
-  background: #fff;
+/* HEADER + FOOTER SHARED */
+.header,
+.footer,
+.side-header,
+.side-footer {
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  font-size: 0.9rem;
 }
-#about {
-  background: #fff;
+
+.footer,
+.side-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
-#home {
-  background: #fff;
-  z-index: 5;
+
+.header a,
+.footer a {
+  color: #fff;
+  text-decoration: none;
 }
 
 /* LOGO */
 .logo {
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  text-transform: uppercase;
 }
-.lc {
+.logo .lc {
   color: #0000ff;
 }
-.cc {
-  color: #000;
-}
-
-/* HEADER + FOOTER */
-.header, .side-header {
-  text-align: center;
-  padding: 30px;
-}
-.side-header, .side-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #000;
+.logo .cc {
   color: #fff;
-  padding: 15px 30px;
-}
-.side-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
 
-/* HOME PAGE */
-.title h1 {
+/* MAIN HOME PAGE */
+#home {
+  z-index: 5;
+}
+
+.home-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.home-header h1 {
   margin: 0;
   font-size: 2rem;
+  font-weight: bold;
 }
-.title h2 {
+
+.home-header h2 {
+  margin: 5px 0 20px;
   font-weight: normal;
   color: #333;
 }
 
 .portfolio {
   text-align: center;
-  margin: 30px auto;
+  margin: 30px auto 100px;
   max-width: 900px;
 }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
 }
+
+.item {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.item:hover {
+  transform: scale(1.03);
+}
+
 .item img {
   width: 100%;
   border-radius: 8px;
 }
+
 .item p {
   font-weight: bold;
   text-transform: uppercase;
   margin-top: 8px;
 }
 
-/* FOOTER */
-.footer {
-  background: #000;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-.btn {
+/* FOOTER BUTTON */
+.footer .btn {
   background: #fff;
   color: #000;
   border: none;
@@ -131,26 +142,39 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
-.btn:hover {
+.footer .btn:hover {
   background: #0000ff;
   color: #fff;
 }
 
 /* BOOKS PAGE */
-.side-content {
-  text-align: center;
-  padding: 40px 20px 80px;
+#books .side-header,
+#about .side-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
-.side-content h1 {
+
+#books .side-content,
+#about .side-content {
+  margin-top: 100px;
+  text-align: center;
+  padding: 0 20px 80px;
+}
+
+#books .side-content h1 {
   font-size: 2rem;
   margin-bottom: 30px;
+  font-weight: bold;
 }
+
 .book-gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
 }
+
 .book-gallery img {
   width: 180px;
   border-radius: 6px;
@@ -161,20 +185,54 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
   align-items: center;
+  gap: 40px;
+  text-align: left;
+  margin-top: 100px;
 }
+
 .about-box img {
   width: 200px;
   border-radius: 100%;
 }
+
 .about-text {
   max-width: 400px;
-  text-align: left;
 }
+
+.about-text h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.about-text p {
+  line-height: 1.5;
+}
+
 .about-text .btn {
   background: #000;
   color: #fff;
-  margin-top: 10px;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  text-decoration: none;
   display: inline-block;
+}
+.about-text .btn:hover {
+  background: #0000ff;
+}
+
+/* TRANSITION STATES (for JS triggers) */
+.panel.hidden-left {
+  left: -100%;
+  opacity: 0;
+  z-index: 0;
+}
+
+.panel.hidden-right {
+  left: 100%;
+  opacity: 0;
+  z-index: 0;
 }
