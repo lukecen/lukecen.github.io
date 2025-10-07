@@ -1,1 +1,180 @@
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #fff;
+  overflow: hidden;
+}
 
+.site-container {
+  display: flex;
+  width: 300vw;
+  height: 100vh;
+  transition: transform 0.8s ease-in-out;
+  position: relative;
+}
+
+/* PANELS */
+.panel {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  flex-shrink: 0;
+  background: white;
+  transform: translateX(0);
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.8s ease-in-out;
+}
+
+.panel.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+  z-index: 10;
+}
+
+/* BACKGROUND COLORS */
+#books {
+  background: #fff;
+}
+#about {
+  background: #fff;
+}
+#home {
+  background: #fff;
+  z-index: 5;
+}
+
+/* LOGO */
+.logo {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.lc {
+  color: #0000ff;
+}
+.cc {
+  color: #000;
+}
+
+/* HEADER + FOOTER */
+.header, .side-header {
+  text-align: center;
+  padding: 30px;
+}
+.side-header, .side-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000;
+  color: #fff;
+  padding: 15px 30px;
+}
+.side-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* HOME PAGE */
+.title h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+.title h2 {
+  font-weight: normal;
+  color: #333;
+}
+
+.portfolio {
+  text-align: center;
+  margin: 30px auto;
+  max-width: 900px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+.item img {
+  width: 100%;
+  border-radius: 8px;
+}
+.item p {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* FOOTER */
+.footer {
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.btn {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn:hover {
+  background: #0000ff;
+  color: #fff;
+}
+
+/* BOOKS PAGE */
+.side-content {
+  text-align: center;
+  padding: 40px 20px 80px;
+}
+.side-content h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+.book-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+.book-gallery img {
+  width: 180px;
+  border-radius: 6px;
+}
+
+/* ABOUT PAGE */
+.about-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+}
+.about-box img {
+  width: 200px;
+  border-radius: 100%;
+}
+.about-text {
+  max-width: 400px;
+  text-align: left;
+}
+.about-text .btn {
+  background: #000;
+  color: #fff;
+  margin-top: 10px;
+  display: inline-block;
+}
