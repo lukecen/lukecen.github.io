@@ -125,6 +125,22 @@ body {
   border-radius: 8px;
 }
 
+.item embed {
+  border-radius: 8px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+}
+
+.item a img {
+  margin-top: 8px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.item a img:hover {
+  transform: scale(1.02);
+}
+
 .item p {
   font-weight: bold;
   text-transform: uppercase;
