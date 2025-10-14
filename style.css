@@ -180,6 +180,12 @@ body {
   border-radius: 6px;
 }
 
+.item embed {
+  border-radius: 8px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+}
+
 /* ABOUT PAGE */
 .about-box {
   display: flex;
