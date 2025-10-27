@@ -2,159 +2,285 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luke Cenatiempo | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luke Cenatiempo — Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0c0c0d;
+      --text: #e7e7ea;
+      --muted:#a9a9b2;
+      --card:#141417;
+      --accent:#7aa7ff;
+      --ring: rgba(122,167,255,.35);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --grad: radial-gradient(1200px 600px at 10% -10%, #2947ff33, transparent 60%),
+              radial-gradient(900px 500px at 110% 10%, #9d4edd33, transparent 60%),
+              radial-gradient(1000px 700px at 50% 120%, #00d4ff26, transparent 60%);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: var(--bg);
+      background-image: var(--grad);
+      line-height:1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      scroll-behavior:smooth;
+    }
+
+    /* Layout */
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: saturate(160%) blur(10px);
+      background: linear-gradient(to bottom, rgba(12,12,13,.75), rgba(12,12,13,.35));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 0;
+    }
+    .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit}
+    .logo{
+      width:36px; height:36px; border-radius:10px;
+      background: linear-gradient(135deg, #7aa7ff, #9d4edd);
+      box-shadow: 0 6px 18px var(--ring);
+    }
+    .brand h1{font:800 18px/1 Inter, sans-serif; letter-spacing:.4px; margin:0}
+    nav a{
+      color:var(--muted); text-decoration:none; font-weight:600;
+      padding:8px 12px; border-radius:12px; transition:.2s ease;
+    }
+    nav a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+
+    /* Hero */
+    .hero{
+      display:grid; grid-template-columns: 1.15fr .85fr; gap:28px; align-items:end;
+      padding:72px 0 26px;
+    }
+    .title{
+      font-family:"Playfair Display", serif; font-weight:800; font-size:clamp(40px, 6vw, 68px);
+      letter-spacing:.2px; line-height:1.04; margin:0 0 10px;
+    }
+    .kicker{color:var(--muted); font-weight:600; letter-spacing:.3px; margin-bottom:14px}
+    .hero p{color:#d7d7dc; margin:12px 0 0; max-width:58ch}
+    .cta{
+      display:flex; gap:12px; margin-top:22px; flex-wrap:wrap;
+    }
+    .btn{
+      appearance:none; border:none; cursor:pointer; text-decoration:none;
+      color:#0b0b0c; background:var(--accent); font-weight:800;
+      padding:12px 18px; border-radius:14px; transition:.2s; box-shadow:0 10px 28px var(--ring);
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.soft{
+      background:#1b1b20; color:var(--text); box-shadow:none; border:1px solid rgba(255,255,255,.08)
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);
+    }
+    .hero-card img{
+      display:block; width:100%; height:auto; border-radius:14px;
+    }
+    .hero-caption{font-size:13px; color:var(--muted); margin-top:8px}
+
+    /* Section titles */
+    .section{padding:48px 0}
+    .section h2{
+      font-family:"Playfair Display", serif; font-weight:800; font-size:clamp(28px, 3.5vw, 40px); margin:0 0 16px;
+    }
+    .section p.lead{color:#d7d7dc; margin:0 0 24px}
+
+    /* Projects grid */
+    .grid{
+      display:grid; grid-template-columns:repeat(12, 1fr); gap:16px;
+    }
+    .card{
+      grid-column: span 4; /* 3-up on desktop */
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      overflow:hidden; position:relative; transition:transform .25s ease, border-color .25s ease;
+      box-shadow:var(--shadow);
+    }
+    .card:hover{transform: translateY(-4px); border-color: rgba(122,167,255,.35)}
+    .thumb{aspect-ratio: 4/3; width:100%; object-fit:cover; display:block}
+    .card-body{padding:14px 14px 16px}
+    .tag{font-size:12px; color:var(--muted); letter-spacing:.3px}
+    .card h3{margin:6px 0 6px; font-size:18px}
+    .card p{margin:0; color:#d7d7dc}
+    .card a.stretch{
+      position:absolute; inset:0; border:0; text-indent:-9999px; overflow:hidden;
+    }
+
+    /* About */
+    .about{
+      display:grid; grid-template-columns: .9fr 1.1fr; gap:22px; align-items:center;
+    }
+    .about img{
+      width:100%; height:auto; border-radius:16px; display:block;
+      border:1px solid rgba(255,255,255,.1);
+      box-shadow:var(--shadow);
+    }
+
+    /* Contact */
+    .contact{
+      display:flex; gap:14px; flex-wrap:wrap;
+    }
+    .pill{
+      padding:10px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12);
+      color:#d7d7dc; text-decoration:none; transition:.2s
+    }
+    .pill:hover{border-color: rgba(122,167,255,.5); color:var(--text)}
+
+    /* Footer */
+    footer{padding:26px 0 46px; color:var(--muted); font-size:14px; text-align:center}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr; gap:18px}
+      .about{grid-template-columns:1fr}
+    }
+    @media (max-width: 880px){
+      .card{grid-column: span 6;} /* 2-up */
+    }
+    @media (max-width: 560px){
+      .card{grid-column: span 12;} /* 1-up */
+    }
+  </style>
 </head>
+
 <body>
-  <!-- MAIN WRAPPER -->
-  <div class="site-container">
-
-<div class="book-gallery">
-  <img src="book1.jpg" alt="">
-  <img src="book2.jpg" alt="">
-  <img src="book3.jpg" alt="">
-  <img src="book4.jpg" alt="">
-  <img src="book5.jpg" alt="">
-  <img src="book6.jpg" alt="">
-</div>
-
-<!-- Add this right below the gallery -->
-<div class="pdf-viewer">
-  <embed src="BOOKS.pdf" type="application/pdf" width="100%" height="600px" />
-</div>
-
-      <footer class="side-footer">
-        <div class="logo"><span class="lc">L</span><span class="cc">C</span> Luke Cenatiempo</div>
-      </footer>
-    </section>
-
-    <!-- CENTER PANEL (HOME) -->
-    <section id="home" class="panel active">
-      <header class="header">
-        <div class="logo">
-          <span class="lc">L</span><span class="cc">C</span>
-        </div>
-        <div class="title">
-          <h1>Luke Cenatiempo</h1>
-          <h2>Graphic Designer</h2>
-        </div>
-      </header>
-
-     <main class="portfolio">
-  <h3>Portfolio</h3>
-  <div class="grid">
-
-    <div class="item">
-      <img src="type-sculptures.jpg" alt="">
-      <img src="type-sculptures-2.jpg" alt="Type Sculptures Image">
-      <p>TYPE SCULPTURES</p>
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Home">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Luke Cenatiempo</h1>
+      </a>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="item">
-  <img src="visents.jpg" alt="">
-  <img src="visents-2.jpg" alt="Visents Image">
-  <img src="VISENT-GIF.gif" alt="Visents Animated GIF">
-  <p>VISENTS</p>
-</div>
-
-    <div class="item">
-      <img src="designer-collage.jpg" alt="">
-      <img src="designer-collage-2.jpg" alt="Designer Collage Image">
-      <p>DESIGNER COLLAGE</p>
-    </div>
-
-   <div class="item">
-  <img src="sound-data.jpg" alt="">
-  <img src="sound-data-2.jpg" alt="Sound Data Image">
-
-  <!-- Embed PDF directly -->
-  <embed src="sound design (2).pdf" type="application/pdf" width="100%" height="400px" />
-
-  <p>SOUND DATA</p>
-</div>
-
-    <div class="item">
-      <button onclick="openPanel('books')">
-        <img src="books.jpg" alt="">
-        <img src="books-2.jpg" alt="Books Image">
-      </button>
-      <p>BOOKS</p>
-    </div>
-
-   <div class="item">
-  <img src="spread.jpg" alt="">
-  <img src="spread-2.jpg" alt="Spread Image">
-
-  <!-- Embed the PDF directly -->
-  <embed src="type spread FINAL.pdf" type="application/pdf" width="100%" height="400px" />
-
-  <p>SPREAD</p>
-</div>
-
-  <div class="item">
-  <img src="3d-letter.jpg" alt="">
-  <img src="3d-letter-2.jpg" alt="3D Letter Image">
-
-  <!-- Embed PDF directly -->
-  <embed src="30 letter version 2pdf.pdf" type="application/pdf" width="100%" height="400px" />
-
-  <p>3D LETTER</p>
-</div>
-</main>
-
-      <footer class="footer">
-        <div class="footer-left">
-          <span class="lc">L</span><span class="cc">C</span> Luke Cenatiempo
-        </div>
-        <div class="footer-right">
-          <button class="btn" onclick="openPanel('about')">ABOUT</button>
-        </div>
-      </footer>
-    </section>
-
-    <!-- RIGHT PANEL (ABOUT) -->
-    <section id="about" class="panel active">
-  <div class="about-container">
-    <img
-      src="Aboutme.jpg"
-      alt="Luke holding a lamb"
-      class="about-photo"
-      loading="lazy"
-    />
-
-      <div class="side-content">
-        <h1>ABOUT</h1>
-        <div class="about-box">
-          <img src="luke.jpg" alt="Luke Cenatiempo">
-          <div class="about-text">
-            <h2>Hi, I'm Luke Cenatiempo!</h2>
-            <p>When I'm not designing, I'm experimenting or playing around with creative processes — typography, color, and layout are my favorite tools for effectively moving ideas.</p>
-            <p>I firmly believe that design is more than just visuals — it’s communication, storytelling, advocacy, and exploration.</p>
-            <p>I'm always eager to collaborate with like-minded creatives who love to push ideas, learn, and create something meaningful together.</p>
-            <p><strong>Education:</strong><br> BFA Graphic Design, University of Connecticut</p>
-            <a href="mailto:youremail@example.com" class="btn">Email</a>
-          </div>
+  <main id="home" class="wrap">
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <div class="kicker">Graphic Design • Interaction • Typography</div>
+        <h2 class="title">Designer crafting clear systems and playful visuals.</h2>
+        <p>
+          Portfolio highlights from studio, personal experiments, and UConn projects.
+          Exploring type, motion, and data-driven stories with a focus on accessible design.
+        </p>
+        <div class="cta">
+          <a class="btn" href="#work">View Selected Work</a>
+          <a class="btn soft" href="#contact">Get in Touch</a>
         </div>
       </div>
-
-      <footer class="side-footer">
-        <div class="logo"><span class="lc">L</span><span class="cc">C</span> Luke Cenatiempo</div>
-      </footer>
+      <div class="hero-card">
+        <img src="Aboutme.jpg" alt="Luke holding a lamb — candid portrait" />
+        <div class="hero-caption">Hi! I’m Luke — designer, learner, and serial prototyper.</div>
+      </div>
     </section>
 
-  </div>
+    <!-- Projects -->
+    <section id="work" class="section">
+      <h2>Selected Work</h2>
+      <p class="lead">Each tile links to a project page or case study.</p>
+
+      <div class="grid">
+        <!-- Project 1 -->
+        <article class="card">
+          <img class="thumb" src="visents-2.jpg" alt="VISENTS project thumbnail" />
+          <div class="card-body">
+            <div class="tag">Brand • Motion</div>
+            <h3>VISENTS</h3>
+            <p>Identity and kinetic typesetting for a sound-forward visual brand.</p>
+          </div>
+          <a class="stretch" href="visents.html" aria-label="Open VISENTS"></a>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card">
+          <img class="thumb" src="sound-data-2.jpg" alt="Sound Data visualization thumbnail" />
+          <div class="card-body">
+            <div class="tag">Data • Web</div>
+            <h3>Sound Data</h3>
+            <p>Interactive audio-to-form visualizations exploring rhythm and density.</p>
+          </div>
+          <a class="stretch" href="sound-data.html" aria-label="Open Sound Data"></a>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card">
+          <img class="thumb" src="3d-letter-2.jpg" alt="3D typographic sculpture thumbnail" />
+          <div class="card-body">
+            <div class="tag">Type • 3D</div>
+            <h3>3D Letter</h3>
+            <p>Wearable sculpture and grid-based studies of letterform anatomy.</p>
+          </div>
+          <a class="stretch" href="3d-letter.html" aria-label="Open 3D Letter"></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="about">
+        <img src="Aboutme.jpg" alt="Luke smiling and holding a lamb" />
+        <div>
+          <p class="lead">
+            I’m a UConn designer focused on typography, interaction, and environmental storytelling.
+          </p>
+          <p>
+            I like building crisp systems that leave room for play: modular grids, variable type,
+            and small motion moments that guide—not distract. I’m currently exploring multi-script
+            typography and information design rooted in Earth & environmental science.
+          </p>
+          <p>
+            Outside class, you’ll find me prototyping in code, designing posters, or contributing to
+            student org projects (and apparently befriending lambs).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="contact">
+        <!-- Replace with your real links -->
+        <a class="pill" href="mailto:your.email@uconn.edu">your.email@uconn.edu</a>
+        <a class="pill" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <a class="pill" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="pill" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Luke Cenatiempo — All rights reserved.
+  </footer>
 
   <script>
-    function openPanel(panelId) {
-      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-      document.getElementById(panelId).classList.add('active');
-    }
-
-    function closePanels() {
-      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-      document.getElementById('home').classList.add('active');
-    }
+    // tiny enhancement: current year
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
